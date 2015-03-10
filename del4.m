@@ -38,4 +38,4 @@ while maxi <= 200
     m = m+0.001;
     maxi = max(U(3,:));
 end
-m
+disp(m);

@@ -16,9 +16,10 @@ for i = 1:antalsteg
     W = 686;
     D = -0.227*(U(1,i)^2)*sign(U(1,i));
     B = 0;
-    U(4, i+1) = 150;
+    U(4, i+1) = 0;
     if U(3, i) >= 150
         B = -10*(U(3,i)-150);
+        U(4, i+1) = 150;
     end
     U(5,i+1) = W/m;
     U(6,i+1) = D/m;
@@ -39,4 +40,4 @@ x=linspace(0, maxtid, antalsteg+1);
 plot(x, U(1:4,:));
 xlabel('Tid (s)')
 
-legend('Speed(m/s)', 'Acceleration(m/s²)', 'Distance(m)', '150m');
+legend('Speed', 'Acceleration', 'Distance', '150m');
