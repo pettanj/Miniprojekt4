@@ -1,10 +1,11 @@
 clear all;
 close all;
-%u2 = 
-%u2prim = (686 - 0.227 * u2^2)/70;
-%v2prim = (686-0.227 * v2^2 - 10*(u1 - 150))/70;
-%U = zeros(2, 101);
+maxi = 150;
+U(1, 1) = 0; % x'
+U(2, 1) = 0; % x
 m = 70;
+while maxi <= 195
+
 U(1, 1) = 0; % x'
 U(2, 1) = 0; % x''
 U(3, 1) = 0; % x
@@ -37,7 +38,8 @@ for i = 1:antalsteg
     U(3, i+1) = U(3,i) + h*U(1, i);
 end
 
+maxi = max(Yout(:,1));
+end
 figure;
-x=linspace(0, maxtid, antalsteg+1);
-plot(x, U(:,:));
-legend('Speed', 'Acceleration', 'Distance', 'debug', 'W/m', 'D/m', 'B/m');
+plot(Tout, Yout);
+legend('Distance', 'Speed');

@@ -1,0 +1,17 @@
+clear all;
+close all;
+
+m = 70;
+U(1, 1) = 0; % x'
+U(2, 1) = 0; % x
+[Tout, Yout] = ode45(@odefunc, [0 50], U);
+j = 1;
+for i = Yout
+   Foo = odefunc(0, i); 
+   Acc(3, j) = Foo(2, 1);
+   j = j+1;
+end
+figure;
+%x=linspace(0, maxtid, antalsteg+1);
+plot(Tout, Yout);
+legend('Distance', 'Speed');
